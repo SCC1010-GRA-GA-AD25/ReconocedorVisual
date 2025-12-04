@@ -8,6 +8,8 @@ let video;
 let flippedVideo;
 // To store the classification
 let label = "";
+let texto = ""
+let confianza = 0
 
 // Load the model first
 function preload() {
@@ -35,7 +37,16 @@ function draw() {
   fill(255);
   textSize(16);
   textAlign(CENTER);
-  text(label, width / 2, height - 4);
+  if (label === "Control") {
+    texto = "Control de Cinisplit!🎛️🎛️"
+  } else if (label === "Vaso") {
+    texto = "Vaso detected!🥤🥤"
+  } else if (label === "Cuchara") {
+    texto = "Cuchara detected!🥄🥄"
+  } else if (label === "Pared") {
+    texto = "Pared detected!🧱🧱"
+  } 
+  text(texto + " " + confianza, width / 2, height - 4);
 }
 
 // Get a prediction for the current video frame
